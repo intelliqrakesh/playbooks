@@ -1,0 +1,17 @@
+---
+- name: install s/w's
+  hosts: all
+  tasks:
+    - block:
+      - name: install tree
+        apt:
+          name: tree
+          state: present
+          update_cache: yes
+      rescue:
+      - name: install tree
+        yum:
+          name: tree
+          state: present
+          update_cache: yes
+...

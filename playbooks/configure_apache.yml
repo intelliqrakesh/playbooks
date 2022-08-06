@@ -1,0 +1,12 @@
+---
+- name: call multiple child playbooks
+  hosts: all
+  tasks:
+    - name: call child books
+      include: "{{item}}"
+      with_items:
+        - install_apache.yml
+        - edit_indexfile.yml
+        - restart_apache.yml
+
+...

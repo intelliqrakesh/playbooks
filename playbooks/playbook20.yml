@@ -1,0 +1,17 @@
+---
+- name: installing s/w's
+  hosts: all
+  tasks:
+    - name: install tree using apt
+      apt:
+        name: tree
+        state: present
+        update_cache: yes
+      when: ansible_distribution == "Ubuntu"
+    - name: install tree using yum
+      yum:
+        name: tree
+        state: present
+        update_cache: yes
+      when: ansible_distribution == "RedHat"
+...

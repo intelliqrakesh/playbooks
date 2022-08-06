@@ -1,0 +1,28 @@
+---
+- name: implementing handlers
+  hosts: all
+  tasks:
+    - name: install tomcat
+      apt:
+        name: tomcat9
+        state: present
+        update_cache: yes
+    - name: install tomcat9-admin
+      apt:
+        name: tomcat9-admin
+        state: present
+        update_cache: yes
+    - name: copy tomcat-users.xml file
+      copy:
+        src: tomcat-users.xml
+        dest: /etc/tomcat9
+      notify: restart tomcat9
+  handlers:
+    - name: restart tomcat9
+      service:
+        name: tomcat9
+        state: restarted
+          
+
+
+...

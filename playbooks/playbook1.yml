@@ -1,0 +1,11 @@
+---
+- name: create a user
+  hosts: all
+  tasks:
+    - name: create user
+      user:
+        name: "bharath"
+        password: "intelliqit"
+        uid: 3436
+      
+...

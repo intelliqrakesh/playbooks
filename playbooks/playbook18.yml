@@ -1,0 +1,16 @@
+---
+- name: check for the user sai and change password
+  hosts: all
+  tasks:
+    - name: check for user sai
+      shell: grep sai /etc/passwd
+      register: a
+    - name: display the output of above module
+      debug:
+        var: a
+    - name: change the password
+      user:
+        name: sai
+        password: intelliqit
+      when: a.changed == true
+...
